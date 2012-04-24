@@ -1,0 +1,35 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+    <title>Beat The Street</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1; user-scalable=no;"/>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+<body>
+	<canvas width="640" height="720" id="canvas"></canvas>
+    <script type="text/javascript" src="libs/phonegap-1.4.1.js"></script>
+       <script>
+            window.addEventListener("load", function() {
+            document.addEventListener("deviceready", onDeviceReady, false);
+        }, false);
+            
+           
+        function onDeviceReady() {
+            //initTransition()
+            //showLoadingView()
+            //startTheGame(100);
+           ReadWriteHighScore.getHighScore();
+           Game.playAudio("assets/audio/Music.mp3");
+            //splashState.setup();
+        }
+    </script>
+    <script type="text/javascript" src="assets/js/ReadWriteHighScore.js"></script>
+    <script type="text/javascript" src="libs/jaws.js"></script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
+	<script type="text/javascript" src="assets/js/game.js"></script>
+	<script type="text/javascript" src="assets/js/character.js"></script>
+	<script type="text/javascript" src="assets/js/Characters.js"></script>
+</body>
+    </html>
+

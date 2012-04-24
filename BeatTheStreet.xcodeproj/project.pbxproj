@@ -35,6 +35,7 @@
 		B10E99921546FFF30070BBF3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E99911546FFF30070BBF3 /* AppDelegate.m */; };
 		B10E99951546FFF30070BBF3 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E99941546FFF30070BBF3 /* MainViewController.m */; };
 		B10E99971546FFF30070BBF3 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B10E99961546FFF30070BBF3 /* MainViewController.xib */; };
+		B10E99A01547000D0070BBF3 /* www in Resources */ = {isa = PBXBuildFile; fileRef = B10E999F1547000D0070BBF3 /* www */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,10 +53,10 @@
 		B10E99651546FFF30070BBF3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B10E99671546FFF30070BBF3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		B10E99691546FFF30070BBF3 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		B10E996D1546FFF30070BBF3 /* BeatTheStreet-Info.plist */ = {isa = PBXFileReference; path = "BeatTheStreet-Info.plist"; sourceTree = "<group>"; };
+		B10E996D1546FFF30070BBF3 /* BeatTheStreet-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BeatTheStreet-Info.plist"; sourceTree = "<group>"; };
 		B10E996F1546FFF30070BBF3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B10E99711546FFF30070BBF3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B10E99731546FFF30070BBF3 /* BeatTheStreet-Prefix.pch */ = {isa = PBXFileReference; path = "BeatTheStreet-Prefix.pch"; sourceTree = "<group>"; };
+		B10E99731546FFF30070BBF3 /* BeatTheStreet-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BeatTheStreet-Prefix.pch"; sourceTree = "<group>"; };
 		B10E99741546FFF30070BBF3 /* PhoneGap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhoneGap.framework; path = /Users/Shared/PhoneGap/Frameworks/PhoneGap.framework; sourceTree = "<absolute>"; };
 		B10E99791546FFF30070BBF3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Resources/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B10E997D1546FFF30070BBF3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Resources/es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -66,12 +67,13 @@
 		B10E99891546FFF30070BBF3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/splash/Default@2x.png"; sourceTree = "<group>"; };
 		B10E998B1546FFF30070BBF3 /* Capture.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Capture.bundle; path = Resources/Capture.bundle; sourceTree = "<group>"; };
 		B10E998D1546FFF30070BBF3 /* PhoneGap.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PhoneGap.plist; sourceTree = "<group>"; };
-		B10E99901546FFF30070BBF3 /* AppDelegate.h */ = {isa = PBXFileReference; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
+		B10E99901546FFF30070BBF3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		B10E99911546FFF30070BBF3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
-		B10E99931546FFF30070BBF3 /* MainViewController.h */ = {isa = PBXFileReference; name = MainViewController.h; path = Classes/MainViewController.h; sourceTree = "<group>"; };
+		B10E99931546FFF30070BBF3 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Classes/MainViewController.h; sourceTree = "<group>"; };
 		B10E99941546FFF30070BBF3 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Classes/MainViewController.m; sourceTree = "<group>"; };
 		B10E99961546FFF30070BBF3 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainViewController.xib; path = Classes/MainViewController.xib; sourceTree = "<group>"; };
-		B10E99991546FFF30070BBF3 /* README */ = {isa = PBXFileReference; name = README; path = Plugins/README; sourceTree = "<group>"; };
+		B10E99991546FFF30070BBF3 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; name = README; path = Plugins/README; sourceTree = "<group>"; };
+		B10E999F1547000D0070BBF3 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 		B10E993F1546FFF20070BBF3 = {
 			isa = PBXGroup;
 			children = (
+				B10E999F1547000D0070BBF3 /* www */,
 				B10E996B1546FFF30070BBF3 /* BeatTheStreet */,
 				B10E99501546FFF30070BBF3 /* Frameworks */,
 				B10E994E1546FFF30070BBF3 /* Products */,
@@ -299,6 +302,7 @@
 				B10E998C1546FFF30070BBF3 /* Capture.bundle in Resources */,
 				B10E998E1546FFF30070BBF3 /* PhoneGap.plist in Resources */,
 				B10E99971546FFF30070BBF3 /* MainViewController.xib in Resources */,
+				B10E99A01547000D0070BBF3 /* www in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
