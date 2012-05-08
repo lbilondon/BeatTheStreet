@@ -53,6 +53,7 @@ var Characters = (function () {
     var lives = Game.getLives();
     var speed = Game.getSpeed();
     var velocity;
+    var pastAcceleration;
     var count;
     var options = { frequency: 1 };  // Update every 1 milli second
                   
@@ -61,7 +62,7 @@ var Characters = (function () {
         count = 0;
          
         dead = false;
-
+        pastAcceleration = 0;
         velocity = 0;
         
        // alert("Hello")
@@ -254,9 +255,9 @@ var Characters = (function () {
                   }
                   navigator.accelerometer.clearWatch(watchID);
                   watchID = null;
-                  window.setTimeout(function(){ backToStartScreen.startScreen() }, 2500);
+                  window.setTimeout(function(){ backToStartScreen.startScreen() }, 1000);
                   //alert("DEAD1")
-                 // jaws.stop(menuState)
+                  jaws.stop(menuState)
                   jaws.stop(myGameState);
                 }
                   
@@ -270,9 +271,10 @@ var Characters = (function () {
                   
     function onSuccess(acceleration) 
     { 
-                  
-        velocity = acceleration.x * 7; 
+        var currentAcceleration = (acceleration.x * 0.1) + (pastAcceleration * 0.9)        
+        velocity = currentAcceleration * accelerationMultiplicationFactor; 
         var x = sprites['mycharacter'].sprite.x + velocity;
+                 
         if (x < 20) 
         {
             x = 20;
@@ -283,6 +285,8 @@ var Characters = (function () {
 
         }
         sprites['mycharacter'].sprite.moveTo(x, sprites['mycharacter'].sprite.y);
+                //console.log(x)
+                 // console.log(jaws.current_tick.getTime());
     }
                   
     function onError()

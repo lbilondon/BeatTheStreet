@@ -1,23 +1,28 @@
 var highScore;
 var dead;
+var framespersecond;
+var accelerationMultiplicationFactor;
 
 var gameStartListener = function(){ 
      window.removeEventListener("touchstart", gameStartListener, false);
-     jaws.start(myGameState);
+    //jaws.pause(menuState)
+     jaws.start(myGameState,{fps:framespersecond});
+    
      //jaws.stop(menuState)
 }
 
 var backToStartScreen = {
     startScreen : function (){   
         //jaws.clear();
-        jaws.switchGameState(menuState);
+        jaws.start(menuState,{fps:framespersecond});
     }
 }
 var mycurrentscore;
 var myGameState = {
     
 		setup: function () {
-            //jaws.stop(menuState)
+            
+            //jaws.clear()
             
             mycurrentscore = 0;
 			road = new jaws.Parallax({repeat_x: true, repeat_y: true});
@@ -46,7 +51,8 @@ var myGameState = {
                     highScore = mycurrentscore
                 }
             }
-			jaws.context.clearRect(0,0,jaws.width,jaws.height);
+            
+			//jaws.context.clearRect(0,0,jaws.width,jaws.height);
 			road.draw();
             blur.draw();
             Characters.draw();
@@ -92,7 +98,7 @@ setup: function () {
     
     var thisBackground = "assets/img/Default.png"
     splashScreen = new jaws.Sprite({image: thisBackground, x:0, y:0 });
-    window.setTimeout(function(){ backToStartScreen.startScreen() }, 2000);
+    window.setTimeout(function(){ backToStartScreen.startScreen() }, 10);
 },
     
 draw: function () {
@@ -104,7 +110,22 @@ function startTheGame(score) {
     
     highScore = score;
     jaws.assets.add(["assets/img/splash.png", "assets/img/road.png", "assets/img/road@x2.png", "assets/img/characterSprite.png", "assets/img/obst_touristSprite.png", "assets/img/copper.png" , "assets/img/manhole.png" , "assets/img/car.png", "assets/img/devil.png", "assets/img/bike.png", "assets/img/cone.png" , "assets/img/MyCharacterDistroyed.png", "assets/img/Blur.png" ]);
-    jaws.start(menuState);
+    
+    var deviceVersion = device.version;
+    if (deviceVersion == "5.1.1" || deviceVersion == "5.1")
+    {
+        framespersecond = 25;
+        accelerationMultiplicationFactor = 70;
+    }
+    else 
+    {
+        framespersecond = 60;
+        accelerationMultiplicationFactor = 130;
+    }
+
+    
+    console.log(device.version)
+    jaws.start(menuState,{fps:framespersecond});
     //alert("HELLO")
     
 };

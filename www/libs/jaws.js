@@ -174,29 +174,33 @@ jaws.start = function(game_state, options,game_state_setup_options) {
   if(!options.width) options.width = 500; 
   if(!options.height) options.height = 300;
   jaws.init(options)
-
+ 
   displayProgress(0)
 
   //jaws.log("setupInput()", true)
  // jaws.setupInput()
 
   function displayProgress(percent_done) {
-    if(jaws.context && options.loading_screen) {
+    if(jaws.context && options.loading_screen && percent_done != 100) {
       jaws.context.save()
       jaws.context.fillStyle  = "black"
       jaws.context.fillRect(0, 0, 640, 960);
-      //jaws.context.textAlign  = "center"
-      //jaws.context.fillStyle  = "fuchsia"
-      //jaws.context.font       = "bold 20px courier new";
-      //jaws.context.fillText(" Wait a Moment", 320/2, 460/2-30);
-      //jaws.context.font       = "bold 20px courier new";
-     // jaws.context.fillText(percent_done + "%", 320/2, 460/2);
-      //jaws.context.restore()
+      //alert("HOW " + percent_done)      
+      /*jaws.context.textAlign  = "center"
+      jaws.context.fillStyle  = "fuchsia"
+      jaws.context.font       = "bold 20px courier new";
+      jaws.context.fillText(" Wait a Moment", 320/2, 460/2-30);
+      jaws.context.font       = "bold 20px courier new";
+      jaws.context.fillText(percent_done + "%", 320/2, 460/2);*/
+      jaws.context.restore()
     }
   }
   /* Callback for when one single assets has been loaded */
   function assetLoaded(src, percent_done) {
-    jaws.log( percent_done + "%: " + src, true)    
+    jaws.log( percent_done + "%: " + src, true)  
+            if (percent_done < 100){
+            jaws.context.fillStyle  = "black"
+            jaws.context.fillRect(0, 0, 320, 480);}
     displayProgress(percent_done)
   }
 
@@ -214,6 +218,7 @@ jaws.start = function(game_state, options,game_state_setup_options) {
   jaws.log("assets.loadAll()", true)
   if(jaws.assets.length() > 0)  { jaws.assets.loadAll({onload:assetLoaded, onerror:assetError, onfinish:assetsLoaded}) }
   else                          { assetsLoaded() } 
+            
 }
 
 /**
@@ -241,7 +246,7 @@ jaws.start = function(game_state, options,game_state_setup_options) {
 */
 jaws.switchGameState = function(game_state, options,game_state_setup_options) {
   var fps = (options && options.fps) || (jaws.game_loop && jaws.game_loop.fps) || 60
-  
+  //console.log("hello" + fps)
   jaws.game_loop && jaws.game_loop.stop()
   jaws.clearKeyCallbacks() // clear out all keyboard callbacks
   if(jaws.isFunction(game_state)) { game_state = new game_state }
@@ -868,7 +873,6 @@ jaws.GameLoop = function GameLoop(game_object, options,game_state_setup_options)
   /** Start the game loop by calling setup() once and then loop update()/draw() forever with given FPS */
   this.start = function() {
     jaws.log("game loop start", true)
-  
     this.first_tick = (new Date()).getTime();
     this.current_tick = (new Date()).getTime();
     this.last_tick = (new Date()).getTime(); 
@@ -876,7 +880,7 @@ jaws.GameLoop = function GameLoop(game_object, options,game_state_setup_options)
     if(game_object.setup) { game_object.setup(game_state_setup_options) }
     step_delay = 1000 / options.fps;
    
-    if(options.fps == 60) {
+    if(options.fps == 25 || options.fps == 60) {
       requestAnimFrame(this.loop)
     }
     else {
@@ -897,7 +901,7 @@ jaws.GameLoop = function GameLoop(game_object, options,game_state_setup_options)
       if(game_object.draw)   { game_object.draw() }
       that.ticks++
     }
-    if(options.fps == 60 && !stopped) requestAnimFrame(that.loop);
+    if((options.fps == 25 || options.fps == 60) && !stopped) requestAnimFrame(that.loop);
     that.last_tick = that.current_tick;
   }
   
