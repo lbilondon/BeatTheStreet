@@ -47,6 +47,7 @@
 @property (nonatomic, copy)  NSString* invokeString;
 @property (nonatomic, retain) IBOutlet UIWindow* window;
 @property (nonatomic, retain) IBOutlet PGViewController* viewController;
+- (void) animateSplashScreen;
 
 @end
 

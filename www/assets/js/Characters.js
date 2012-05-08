@@ -1,7 +1,7 @@
 var Characters = (function () {
     var sprites = {
             tourist: {
-                speed: 0.5,
+                speed: 1,
                 sprite: {}
             },
             mycharacter: {
@@ -14,7 +14,7 @@ var Characters = (function () {
                 sprite: {}
             },
             frog: {
-                speed: 3,
+                speed: 3.5,
                 sprite: {}
             },
             cone: {
@@ -26,7 +26,7 @@ var Characters = (function () {
                 sprite: {}
             },
             benz: {
-                  speed: 2.5,
+                  speed: 3,
                   sprite: {}
             },
             manhole: {
@@ -34,7 +34,7 @@ var Characters = (function () {
                 sprite: {}
             },
             bike: {
-                speed: 3.5,
+                speed: 4,
                 sprite: {}
             },
             passerby: {
@@ -42,7 +42,7 @@ var Characters = (function () {
                 sprite: {}
             },
             manhole: {
-                speed: 2,
+                speed: 0,
                 sprite: {}
             },
             mycharacterdestroyed: {
@@ -53,12 +53,12 @@ var Characters = (function () {
     var lives = Game.getLives();
     var speed = Game.getSpeed();
     var velocity;
-    var count = 0;
+    var count;
     var options = { frequency: 1 };  // Update every 1 milli second
                   
     function setup () {
          
-        count == 1;
+        count = 0;
          
         dead = false;
 
@@ -66,12 +66,12 @@ var Characters = (function () {
         
        // alert("Hello")
 
-        var animTourist = new jaws.Animation({ sprite_sheet: 'assets/img/obst_touristSprite.png', frame_size: [43, 47], frame_duration:80 });
+        var animTourist = new jaws.Animation({ sprite_sheet: 'assets/img/obst_touristSprite.png', frame_size: [43, 47], frame_duration:60 });
         sprites['tourist'].sprite = new jaws.Sprite({ x: 100, y: -43, scale: 1});
         sprites['tourist'].sprite.anim_default = animTourist.slice(0,2);
         sprites['tourist'].sprite.setImage(sprites['tourist'].sprite.anim_default.next());
                 
-        var animCharacter = new jaws.Animation({ sprite_sheet: 'assets/img/characterSprite.png', frame_size: [48, 46], frame_duration:80 });
+        var animCharacter = new jaws.Animation({ sprite_sheet: 'assets/img/characterSprite.png', frame_size: [48, 46], frame_duration:60 });
         sprites['mycharacter'].sprite = new jaws.Sprite({ x: jaws.width / 2 - 20, y: jaws.height - 50, scale: 1});
         sprites['mycharacter'].sprite.anim_default = animCharacter.slice(0,2);
         sprites['mycharacter'].sprite.setImage(sprites['mycharacter'].sprite.anim_default.next());
@@ -89,7 +89,9 @@ var Characters = (function () {
         sprites['passerby'].sprite = new jaws.Sprite({image: "assets/img/passerby.png", x:220 , y:-400});
         sprites['manhole'].sprite = new jaws.Sprite({image: "assets/img/manhole.png", x:150 , y:-1000});
         sprites['bike'].sprite = new jaws.Sprite({image: "assets/img/bike.png", x:150 , y:-1100});
-    
+                  
+        var thisEndScreen = "assets/img/gameover.png"
+        finalScreen = new jaws.Sprite({image: thisEndScreen, x:0, y:0 });
         if (navigator.accelerometer) {
                   watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, { frequency: 1 });                 
         }
@@ -141,7 +143,7 @@ var Characters = (function () {
             sprites['cone'].sprite.moveTo(x, -y);
         } 
         else {
-        sprites['cone'].sprite.y+=(Game.getSpeed()+sprites['cone'].speed);
+        sprites['cone'].sprite.y+=Game.getSpeed()/0.5;
         }
                 
         if (sprites['car'].sprite.y > jaws.height) {
@@ -183,14 +185,14 @@ var Characters = (function () {
             sprites['manhole'].sprite.moveTo(x, -y);
         } 
         else {
-            sprites['manhole'].sprite.y+=(Game.getSpeed());
+            sprites['manhole'].sprite.y += Game.getSpeed()/0.5; //0.5 here is the damping factor
         }
         if (
             (jaws.collideOneWithOne(sprites['mycharacter'].sprite,sprites['benz'].sprite))||
-            (jaws.collideOneWithOne(sprites['mycharacter'].sprite,sprites['car'].sprite)))
+            (jaws.collideOneWithOne(sprites['mycharacter'].sprite,sprites['frog'].sprite))||
+            (jaws.collideOneWithOne(sprites['mycharacter'].sprite,sprites['car'].sprite))||
+            (jaws.collideOneWithOne(sprites['mycharacter'].sprite,sprites['cone'].sprite)))
         {
-            sprites['car'].sprite.setRadius(true)
-            sprites['benz'].sprite.setRadius(true)
             sprites['mycharacterdestroyed'].sprite.moveTo(sprites['mycharacter'].sprite.x, sprites['mycharacterdestroyed'].sprite.y)
             sprites['mycharacterdestroyed'].sprite.setImage(sprites['mycharacterdestroyed'].sprite.anim_default.next());
             dead = true;
@@ -198,16 +200,14 @@ var Characters = (function () {
         
         if (
             (jaws.collideCircles(sprites['mycharacter'].sprite,sprites['tourist'].sprite))||
-
             (jaws.collideCircles(sprites['mycharacter'].sprite,sprites['bike'].sprite))||
             (jaws.collideCircles(sprites['mycharacter'].sprite,sprites['copper'].sprite))||
             (jaws.collideCircles(sprites['mycharacter'].sprite,sprites['manhole'].sprite))||
-            (jaws.collideCircles(sprites['mycharacter'].sprite,sprites['frog'].sprite))||
-            (jaws.collideCircles(sprites['mycharacter'].sprite,sprites['passerby'].sprite))||
-            (jaws.collideCircles(sprites['mycharacter'].sprite,sprites['cone'].sprite))) 
+            (jaws.collideCircles(sprites['mycharacter'].sprite,sprites['passerby'].sprite)))
+            
         {
             //alert(sprites['car'].sprite.getRadius())
-            sprites['mycharacterdestroyed'].sprite.moveTo(sprites['mycharacter'].sprite.x, sprites['mycharacterdestroyed'].sprite.y);
+            sprites['mycharacterdestroyed'].sprite.moveTo(sprites['mycharacter'].sprite.x-20, sprites['mycharacterdestroyed'].sprite.y);
             sprites['mycharacterdestroyed'].sprite.setImage(sprites['mycharacterdestroyed'].sprite.anim_default.next());
             dead = true; 
         }
@@ -223,59 +223,55 @@ var Characters = (function () {
                 
     function draw ()
     {
-
+        sprites['manhole'].sprite.draw(); 
+        sprites['cone'].sprite.draw();
         sprites['tourist'].sprite.draw();
         sprites['copper'].sprite.draw();
         sprites['frog'].sprite.draw();
         sprites['passerby'].sprite.draw();
-        sprites['cone'].sprite.draw();
-        sprites['manhole'].sprite.draw(); 
         sprites['bike'].sprite.draw();
         sprites['benz'].sprite.draw();
         sprites['car'].sprite.draw();
      
       if (dead)       
       {
-                  if (count < 50)    {      
+                  
+                  if (count < 50)    { 
                   sprites['mycharacterdestroyed'].sprite.draw();  
                   count++;
                   } else {
-                  count = 0;
-                  sprites['mycharacterdestroyed'].sprite.draw();
+                  //count = 0;
+                 // sprites['mycharacterdestroyed'].sprite.draw();
+                  finalScreen.draw();
                   // TODO: make sure animation last for at least 20 ticks, not just until the next 20th tick
-                  if (highscore < Game.getScore())
+                  if (highScore < Game.getScore())
                   {
-                  ReadWriteHighScore.setHighScore(Game.getScore())
+                  //ReadWriteHighScore.setHighScore(myGameState.getScore())
                   ReadWriteHighScore.writetofile();
-                  highscore = Game.getScore();
-
-                  
+                  highScore = myGameState.getScore();
+                  myGameState.getScore();
+                  cconsole.log(myGameState.getScore())
                   }
                   navigator.accelerometer.clearWatch(watchID);
                   watchID = null;
-
-                  jaws.context.textAlign  = "right";
-                  jaws.context.fillStyle  = "white";
-                  jaws.context.font       = "bold 20px courier new";
-                  jaws.context.fillText("OH DEAR", (jaws.width/2+jaws.width/6), jaws.height/2);
-                  jaws.context.fillText("YOU'RE DEAD", (jaws.width/2+jaws.width/4.5), jaws.height/2 + 20);
-                  
-                  window.setTimeout(function(){ backToStartScreen.startScreen() }, 3000);
-
-                  jaws.stop();
-                  jaws.clear();
+                  window.setTimeout(function(){ backToStartScreen.startScreen() }, 2500);
+                  //alert("DEAD1")
+                 // jaws.stop(menuState)
+                  jaws.stop(myGameState);
                 }
+                  
         
-        } else {
+        }else {
             sprites['mycharacter'].sprite.draw();
         }
+                  
      }
                   
                   
     function onSuccess(acceleration) 
     { 
                   
-        velocity = acceleration.x * 6; 
+        velocity = acceleration.x * 7; 
         var x = sprites['mycharacter'].sprite.x + velocity;
         if (x < 20) 
         {

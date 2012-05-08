@@ -1,0 +1,7 @@
+#Road
+{
+    height: 16px;
+    width: 16px;
+    background: url(./themes/apple/img/edit.png) no-repeat; // This is actually a 32×32 image
+    -webkit-background-size: 16px 16px;
+}

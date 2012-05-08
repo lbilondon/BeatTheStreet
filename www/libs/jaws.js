@@ -122,6 +122,7 @@ jaws.init = function(options) {
   jaws.width = jaws.canvas ? jaws.canvas.width : jaws.dom.offsetWidth
   jaws.height = jaws.canvas ? jaws.canvas.height  : jaws.dom.offsetHeight
 
+ // jaws.context.scale(1,1);
   jaws.mouse_x = 0
   jaws.mouse_y = 0
   window.addEventListener("mousemove", saveMousePosition)
@@ -183,7 +184,7 @@ jaws.start = function(game_state, options,game_state_setup_options) {
     if(jaws.context && options.loading_screen) {
       jaws.context.save()
       jaws.context.fillStyle  = "black"
-      jaws.context.fillRect(0, 0, 320, 460);
+      jaws.context.fillRect(0, 0, 640, 960);
       //jaws.context.textAlign  = "center"
       //jaws.context.fillStyle  = "fuchsia"
       //jaws.context.font       = "bold 20px courier new";
@@ -1265,23 +1266,9 @@ jaws.Sprite.prototype.rect = function() {
             /** Returns a jaws.Rect() perfectly surrouning sprite. Also cache rect in this.cached_rect. */
 jaws.Sprite.prototype.getRadius = function()
 {
-    if (myradius){
-        //myradius = false;
-        return 50/4
-    }
-    else
-    {
-        return this.width/4    
-    }
+    return this.width/4    
+
     //console.log("This radisu" + this.myradius
-} 
-            
-            
-            
-            
-jaws.Sprite.prototype.setRadius = function(radius)
-{
-        myradius = radius;
 } 
 /**
  * Make this sprite a DOM-based <div> sprite 
@@ -2503,7 +2490,7 @@ var jaws = (function(jaws) {
  * returns true if the two objects are colliding.
  */
 jaws.collideOneWithOne = function(object1, object2) {
-      if(object1.radius && object2.radius && object1 !== object2 && jaws.collideCircles(object1, object2))          return true;
+      if(object1.getRadius() && object2.getRadius() && object1 !== object2 && jaws.collideCircles(object1, object2))          return true;
   if(object1.rect && object2.rect && object1 !== object2 && jaws.collideRects( object1.rect(), object2.rect())) 
             
             {

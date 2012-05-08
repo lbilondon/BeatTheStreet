@@ -28,14 +28,19 @@
 		B10E99811546FFF30070BBF3 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B10E99801546FFF30070BBF3 /* icon.png */; };
 		B10E99831546FFF30070BBF3 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B10E99821546FFF30070BBF3 /* icon@2x.png */; };
 		B10E99851546FFF30070BBF3 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = B10E99841546FFF30070BBF3 /* icon-72.png */; };
-		B10E99881546FFF30070BBF3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B10E99871546FFF30070BBF3 /* Default.png */; };
-		B10E998A1546FFF30070BBF3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B10E99891546FFF30070BBF3 /* Default@2x.png */; };
 		B10E998C1546FFF30070BBF3 /* Capture.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B10E998B1546FFF30070BBF3 /* Capture.bundle */; };
 		B10E998E1546FFF30070BBF3 /* PhoneGap.plist in Resources */ = {isa = PBXBuildFile; fileRef = B10E998D1546FFF30070BBF3 /* PhoneGap.plist */; };
 		B10E99921546FFF30070BBF3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E99911546FFF30070BBF3 /* AppDelegate.m */; };
 		B10E99951546FFF30070BBF3 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E99941546FFF30070BBF3 /* MainViewController.m */; };
 		B10E99971546FFF30070BBF3 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B10E99961546FFF30070BBF3 /* MainViewController.xib */; };
 		B10E99A01547000D0070BBF3 /* www in Resources */ = {isa = PBXBuildFile; fileRef = B10E999F1547000D0070BBF3 /* www */; };
+		B10E99A4154850B40070BBF3 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B10E99A3154850B40070BBF3 /* icon@2x.png */; };
+		B10E99A6154853D30070BBF3 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B10E99A5154853D30070BBF3 /* Icon.png */; };
+		B14C103F154EB99600719E58 /* x.png in Resources */ = {isa = PBXBuildFile; fileRef = B14C103E154EB99600719E58 /* x.png */; };
+		B14C1041154ED54200719E58 /* y.png in Resources */ = {isa = PBXBuildFile; fileRef = B14C1040154ED54200719E58 /* y.png */; };
+		B14C1043154EF0D600719E58 /* chicagobold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B14C1042154EF0D600719E58 /* chicagobold.ttf */; };
+		B18AC40D15499148005BD06B /* 114x114_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B18AC40C15499148005BD06B /* 114x114_Icon.png */; };
+		B18AC41015499158005BD06B /* 57x57_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B18AC40F15499158005BD06B /* 57x57_Icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,8 +68,6 @@
 		B10E99801546FFF30070BBF3 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = Resources/icons/icon.png; sourceTree = "<group>"; };
 		B10E99821546FFF30070BBF3 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Resources/icons/icon@2x.png"; sourceTree = "<group>"; };
 		B10E99841546FFF30070BBF3 /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72.png"; path = "Resources/icons/icon-72.png"; sourceTree = "<group>"; };
-		B10E99871546FFF30070BBF3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/splash/Default.png; sourceTree = "<group>"; };
-		B10E99891546FFF30070BBF3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/splash/Default@2x.png"; sourceTree = "<group>"; };
 		B10E998B1546FFF30070BBF3 /* Capture.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Capture.bundle; path = Resources/Capture.bundle; sourceTree = "<group>"; };
 		B10E998D1546FFF30070BBF3 /* PhoneGap.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PhoneGap.plist; sourceTree = "<group>"; };
 		B10E99901546FFF30070BBF3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
@@ -74,6 +77,13 @@
 		B10E99961546FFF30070BBF3 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainViewController.xib; path = Classes/MainViewController.xib; sourceTree = "<group>"; };
 		B10E99991546FFF30070BBF3 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; name = README; path = Plugins/README; sourceTree = "<group>"; };
 		B10E999F1547000D0070BBF3 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
+		B10E99A3154850B40070BBF3 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		B10E99A5154853D30070BBF3 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		B14C103E154EB99600719E58 /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = x.png; path = "../../../Desktop/untitled folder/x.png"; sourceTree = "<group>"; };
+		B14C1040154ED54200719E58 /* y.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = y.png; path = "../../../Desktop/untitled folder/y.png"; sourceTree = "<group>"; };
+		B14C1042154EF0D600719E58 /* chicagobold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = chicagobold.ttf; path = www/assets/font/chicagobold.ttf; sourceTree = SOURCE_ROOT; };
+		B18AC40C15499148005BD06B /* 114x114_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114x114_Icon.png; sourceTree = "<group>"; };
+		B18AC40F15499158005BD06B /* 57x57_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 57x57_Icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +121,12 @@
 		B10E993F1546FFF20070BBF3 = {
 			isa = PBXGroup;
 			children = (
+				B14C103E154EB99600719E58 /* x.png */,
+				B14C1040154ED54200719E58 /* y.png */,
+				B18AC40F15499158005BD06B /* 57x57_Icon.png */,
+				B18AC40C15499148005BD06B /* 114x114_Icon.png */,
+				B10E99A5154853D30070BBF3 /* Icon.png */,
+				B10E99A3154850B40070BBF3 /* icon@2x.png */,
 				B10E999F1547000D0070BBF3 /* www */,
 				B10E996B1546FFF30070BBF3 /* BeatTheStreet */,
 				B10E99501546FFF30070BBF3 /* Frameworks */,
@@ -174,6 +190,7 @@
 		B10E99761546FFF30070BBF3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B14C1042154EF0D600719E58 /* chicagobold.ttf */,
 				B10E998B1546FFF30070BBF3 /* Capture.bundle */,
 				B10E99771546FFF30070BBF3 /* en.lproj */,
 				B10E997B1546FFF30070BBF3 /* es.lproj */,
@@ -212,8 +229,6 @@
 		B10E99861546FFF30070BBF3 /* splash */ = {
 			isa = PBXGroup;
 			children = (
-				B10E99871546FFF30070BBF3 /* Default.png */,
-				B10E99891546FFF30070BBF3 /* Default@2x.png */,
 			);
 			name = splash;
 			sourceTree = "<group>";
@@ -297,12 +312,17 @@
 				B10E99811546FFF30070BBF3 /* icon.png in Resources */,
 				B10E99831546FFF30070BBF3 /* icon@2x.png in Resources */,
 				B10E99851546FFF30070BBF3 /* icon-72.png in Resources */,
-				B10E99881546FFF30070BBF3 /* Default.png in Resources */,
-				B10E998A1546FFF30070BBF3 /* Default@2x.png in Resources */,
 				B10E998C1546FFF30070BBF3 /* Capture.bundle in Resources */,
 				B10E998E1546FFF30070BBF3 /* PhoneGap.plist in Resources */,
 				B10E99971546FFF30070BBF3 /* MainViewController.xib in Resources */,
 				B10E99A01547000D0070BBF3 /* www in Resources */,
+				B10E99A4154850B40070BBF3 /* icon@2x.png in Resources */,
+				B10E99A6154853D30070BBF3 /* Icon.png in Resources */,
+				B18AC40D15499148005BD06B /* 114x114_Icon.png in Resources */,
+				B18AC41015499158005BD06B /* 57x57_Icon.png in Resources */,
+				B14C103F154EB99600719E58 /* x.png in Resources */,
+				B14C1041154ED54200719E58 /* y.png in Resources */,
+				B14C1043154EF0D600719E58 /* chicagobold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,7 +456,7 @@
 					/usr/lib/libSystem.B.dylib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -463,7 +483,7 @@
 					/usr/lib/libSystem.B.dylib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -488,6 +508,7 @@
 				B10E999E1546FFF30070BBF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

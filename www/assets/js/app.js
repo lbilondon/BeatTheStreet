@@ -1,51 +1,67 @@
-//var speed = Game.getSpeed();
-var splashScreen = null;
 var highScore;
 var dead;
-var tickCount = 0;
 
 var gameStartListener = function(){ 
-    
-     jaws.start(myGameState);
      window.removeEventListener("touchstart", gameStartListener, false);
-    
+     jaws.start(myGameState);
+     //jaws.stop(menuState)
 }
 
 var backToStartScreen = {
-    startScreen : function ()
-    {   
+    startScreen : function (){   
+        //jaws.clear();
         jaws.switchGameState(menuState);
     }
 }
-
+var mycurrentscore;
 var myGameState = {
+    
 		setup: function () {
+            //jaws.stop(menuState)
+            
+            mycurrentscore = 0;
 			road = new jaws.Parallax({repeat_x: true, repeat_y: true});
-            var thisBackground = "assets/img/Road.png"
+            var thisBackground = "assets/img/road.png"
             var thisBlur = "assets/img/Blur.png"
             blur = new jaws.Sprite({image: thisBlur, x:0, y:0 });
-			road.addLayer({image: thisBackground, x:0, y: jaws.height, damping: 1});
-           // road.addLayer({image: thisBlur, x:0, y: jaws.height, damping: 1});
-            Game.setup()
+			road.addLayer({image: thisBackground, x:0, y: jaws.height, damping: 0.5});
             Characters.setup();
-            
 		},
 		update: function () {
             if (!dead) {
                 road.camera_y -= 6;
+                mycurrentscore += 1;
             }
-            Game.update();
+           // Game.update();
             Characters.update();
         },
+        getScore: function () {
+                //return mycurrentscore;
+        },
 		draw: function () {
-            
+            if (dead)
+            {
+                if (mycurrentscore > highScore)
+                {
+                    highScore = mycurrentscore
+                }
+            }
 			jaws.context.clearRect(0,0,jaws.width,jaws.height);
 			road.draw();
             blur.draw();
             Characters.draw();
-            Game.draw(jaws.context,highscore);
-            if (Game.getScore() > highscore)
-            {
+            jaws.context.textAlign  = "right";
+            jaws.context.fillStyle  = "white";
+            jaws.context.font       = "bold 20px chicagobold";
+            jaws.context.fillText("SCORE:" + mycurrentscore, jaws.width - 10, 20);
+            
+            jaws.context.textAlign  = "left";
+            jaws.context.fillStyle  = "white";
+            jaws.context.font       = "bold 20px chicagobold";
+            jaws.context.fillText("HI-SCORE:" + highScore, 10, 20);
+           // Game.draw(jaws.context);
+            if (Game.getScore() > highScore){
+                
                 ReadWriteHighScore.setHighScore(Game.getScore());
                 ReadWriteHighScore.writetofile();
             }
@@ -56,33 +72,41 @@ var myGameState = {
 
 var menuState = {
         setup: function () {
-
+            document.body.addEventListener('touchmove', function(e){ e.preventDefault(); });
             window.addEventListener("touchstart", gameStartListener, false);
             var thisBackground = "assets/img/StartSreen.png"
-            if (jaws.width > 320) {
-                thisBackground = "assets/img/StartSreen.png"
-            }
             splashScreen = new jaws.Sprite({image: thisBackground, x:0, y:0 });
         },
     
-        update: function () {
-        },
-
         draw: function () {
             splashScreen.draw();
             jaws.context.textAlign  = "right";
             jaws.context.fillStyle  = "white";
-            jaws.context.font       = "bold 20px courier new";
-            jaws.context.fillText("HI-SCORE : " + highscore, 240, 280);
+            jaws.context.font       = "bold 20px chicagobold";
+            jaws.context.fillText("HI-SCORE : " + highScore, 240, 280);
         } 
     };
 
-function startTheGame(score) {
-    highscore = score;
+var SplashState = {
+setup: function () {
+    
+    var thisBackground = "assets/img/Default.png"
+    splashScreen = new jaws.Sprite({image: thisBackground, x:0, y:0 });
+    window.setTimeout(function(){ backToStartScreen.startScreen() }, 2000);
+},
+    
+draw: function () {
+    splashScreen.draw();
+} 
+};
 
+function startTheGame(score) {
+    
+    highScore = score;
     jaws.assets.add(["assets/img/splash.png", "assets/img/road.png", "assets/img/road@x2.png", "assets/img/characterSprite.png", "assets/img/obst_touristSprite.png", "assets/img/copper.png" , "assets/img/manhole.png" , "assets/img/car.png", "assets/img/devil.png", "assets/img/bike.png", "assets/img/cone.png" , "assets/img/MyCharacterDistroyed.png", "assets/img/Blur.png" ]);
     jaws.start(menuState);
-    //jaws.loadAll({onfinish: menuState})
+    //alert("HELLO")
+    
 };
 
 

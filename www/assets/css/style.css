@@ -1,11 +1,18 @@
 body {
     margin:0;
     padding:0;
+    font-family:"chicagobold";
+    font-weight:0.1em
 }
 
+@font-face {
+    font-family: "chicagobold";
+    src: url("assets/font/chicagobold.ttf");
+}  
 canvas {
     display:block;
     margin:0;
     padding:0;
 	border:0;
 }
+

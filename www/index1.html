@@ -1,0 +1,80 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+    <title>retina or not</title>
+    <meta name="viewport" content="width=320; height=device-height; initial-scale=1; maximum-scale=1; user-scalable=no;"/>
+    <meta charset="utf-8">
+  </head>
+<body>
+	<canvas width="320" height="240" id="canvasnonretina">
+    <p> This is non retina</p>
+    </canvas>
+      <script type="text/javascript" src="libs/phonegap-1.4.1.js"></script>
+       <script>
+    var drawingCanvas = document.getElementById('canvasnonretina');
+	// Check the element is in the DOM and the browser supports canvas
+	if(drawingCanvas.getContext) {
+	// Initaliase a 2-dimensional drawing context
+	var context = drawingCanvas.getContext('2d');
+	make_base();
+
+	function make_base()
+{
+  base_image = new Image();
+  base_image.src = 'assets/img/car.png';
+  base_image.onload = function(){
+    context.drawImage(base_image, 0, 10);
+  }
+}
+	context.filltext = ("NOT RETINA");
+	context.font = "bold 20x courier new"
+	var retinaornot = "NOTRETINA";
+	document.write('<p>RetinaorNOt: ' + retinaornot + '</p>');
+	context1.strokeStyle = "#000000";
+context1.fillStyle = "#A80000";
+context1.beginPath();
+context1.arc(100,100,50,0,Math.PI*2,true);
+context1.closePath();
+context1.stroke();
+context1.fill();
+context1.scale(2,2)
+}
+ </script>
+ <canvas width="320" height="240" id="canvasretina">
+    <p> This is non retina</p>
+    </canvas>
+     <script type="text/javascript"></script>
+       <script>
+    var drawingCanvas = document.getElementById('canvasretina');
+	// Check the element is in the DOM and the browser supports canvas
+	if(drawingCanvas.getContext) {
+	// Initaliase a 2-dimensional drawing context
+	var context1 = drawingCanvas.getContext('2d');
+		make_base1();
+
+	function make_base1()
+{
+  base_image1 = new Image();
+  base_image1.src = 'assets/img/car@2x_21.png';
+  base_image1.onload = function(){
+    context1.drawImage(base_image1, 10, 0);
+  }
+}
+	context1.text = "RETINA";
+	context1.font = "bold 20x courier new"
+	var retina = "RETINA";
+	document.write('<p>RetinaorNOt: ' + retina + '</p>');
+context1.strokeStyle = "#000000";
+context1.fillStyle = "#A80000";
+context1.beginPath();
+context1.arc(100,100,50,0,Math.PI*2,true);
+context1.closePath();
+context1.stroke();
+context1.fill();
+context1.scale(0.5,0.5)
+}
+ </script>
+ 
+</body>
+    </html>
+

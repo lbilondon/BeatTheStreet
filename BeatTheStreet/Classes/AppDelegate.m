@@ -61,12 +61,14 @@
  */
 - (BOOL) application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {    
+   
+    [[UIApplication sharedApplication] setStatusBarHidden:YES animated:NO];
     NSURL* url = [launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];
     if (url && [url isKindOfClass:[NSURL class]]) {
         self.invokeString = [url absoluteString];
 		NSLog(@"BeatTheStreet launchOptions = %@", url);
     }    
-    
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     self.window = [[[UIWindow alloc] initWithFrame:screenBounds] autorelease];
     self.window.autoresizesSubviews = YES;
@@ -74,7 +76,9 @@
     CGRect viewBounds = [[UIScreen mainScreen] applicationFrame];
     
     self.viewController = [[[MainViewController alloc] init] autorelease];
-    self.viewController.useSplashScreen = YES;
+    self.viewController.useSplashScreen = NO;
+    NSLog(@"COLOUR");
+    self.viewController.view.backgroundColor = [UIColor blackColor];
     self.viewController.wwwFolderName = @"www";
     self.viewController.startPage = @"index.html";
     self.viewController.view.frame = viewBounds;
@@ -111,8 +115,34 @@
     
     [self.window addSubview:self.viewController.view];
     [self.window makeKeyAndVisible];
+    [self animateSplashScreen];
     
     return YES;
+}
+
+- (void) animateSplashScreen
+{
+    
+    //fade time
+    CFTimeInterval animation_duration = 3.5;
+    
+    //SplashScreen 
+    UIImageView * splashView = [[[UIImageView alloc] initWithFrame:CGRectMake(0,0, 320, 480)]autorelease];
+    splashView.image = [UIImage imageNamed:@"y.png"];
+    [window addSubview:splashView];
+    [window bringSubviewToFront:splashView];
+    
+    //Animation (fade away with zoom effect)
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:animation_duration];
+    [UIView setAnimationTransition:NO forView:window cache:YES];
+    [UIView setAnimationDelegate:splashView]; 
+    [UIView setAnimationDidStopSelector:@selector(removeFromSuperview)];
+    splashView.alpha = 0.0;
+    splashView.frame = CGRectMake(-60, -60, 440, 600);
+    
+    [UIView commitAnimations];
+    
 }
 
 // this happens while we are running ( in the background, or from within our own app )
