@@ -34,7 +34,7 @@
  */
 var myradius = false;
 var jaws = (function(jaws) {
-
+dt = 0;
 var title
 var log_tag  
 
@@ -895,7 +895,8 @@ jaws.GameLoop = function GameLoop(game_object, options,game_state_setup_options)
     that.current_tick = (new Date()).getTime();
     that.tick_duration = that.current_tick - that.last_tick
     that.fps = mean_value.add(1000/that.tick_duration).get()
-
+            dt = that.tick_duration;              
+    //console.log(that.tick_duration)
     if(!stopped && !paused) {
       if(game_object.update) { game_object.update() }
       if(game_object.draw)   { game_object.draw() }

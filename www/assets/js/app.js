@@ -6,7 +6,7 @@ var accelerationMultiplicationFactor;
 var gameStartListener = function(){ 
      window.removeEventListener("touchstart", gameStartListener, false);
     //jaws.pause(menuState)
-     jaws.start(myGameState,{fps:framespersecond});
+     jaws.start(myGameState,{fps:60});
     
      //jaws.stop(menuState)
 }
@@ -14,7 +14,7 @@ var gameStartListener = function(){
 var backToStartScreen = {
     startScreen : function (){   
         //jaws.clear();
-        jaws.start(menuState,{fps:framespersecond});
+        jaws.start(menuState,{fps:60});
     }
 }
 var mycurrentscore;
@@ -34,7 +34,8 @@ var myGameState = {
 		},
 		update: function () {
             if (!dead) {
-                road.camera_y -= 6;
+                //console.log(countingloop)
+                road.camera_y -= 0.2*dt;
                 mycurrentscore += 1;
             }
            // Game.update();
@@ -112,20 +113,10 @@ function startTheGame(score) {
     jaws.assets.add(["assets/img/splash.png", "assets/img/road.png", "assets/img/road@x2.png", "assets/img/characterSprite.png", "assets/img/obst_touristSprite.png", "assets/img/copper.png" , "assets/img/manhole.png" , "assets/img/car.png", "assets/img/devil.png", "assets/img/bike.png", "assets/img/cone.png" , "assets/img/MyCharacterDistroyed.png", "assets/img/Blur.png" ]);
     
     var deviceVersion = device.version;
-    if (deviceVersion == "5.1.1" || deviceVersion == "5.1")
-    {
-        framespersecond = 25;
-        accelerationMultiplicationFactor = 70;
-    }
-    else 
-    {
-        framespersecond = 60;
-        accelerationMultiplicationFactor = 130;
-    }
-
+    
     
     console.log(device.version)
-    jaws.start(menuState,{fps:framespersecond});
+    jaws.start(menuState,{fps:60});
     //alert("HELLO")
     
 };

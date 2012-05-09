@@ -1,7 +1,7 @@
 var Characters = (function () {
     var sprites = {
             tourist: {
-                speed: 1,
+                speed: 0.05,
                 sprite: {}
             },
             mycharacter: {
@@ -10,11 +10,11 @@ var Characters = (function () {
             },
             copper: {
 
-                speed: 1.5,
+                speed: 0.075,
                 sprite: {}
             },
             frog: {
-                speed: 3.5,
+                speed: 0.175,
                 sprite: {}
             },
             cone: {
@@ -22,11 +22,11 @@ var Characters = (function () {
                 sprite: {}
             },
             car: {
-                speed: 2,
+                speed: 0.1,
                 sprite: {}
             },
             benz: {
-                  speed: 3,
+                  speed: 0.15,
                   sprite: {}
             },
             manhole: {
@@ -34,11 +34,11 @@ var Characters = (function () {
                 sprite: {}
             },
             bike: {
-                speed: 4,
+                speed: 0.2,
                 sprite: {}
             },
             passerby: {
-                speed: 1,
+                speed: 0.05,
                 sprite: {}
             },
             manhole: {
@@ -108,7 +108,7 @@ var Characters = (function () {
             sprites['tourist'].sprite.moveTo(250, -y);
         } 
         else {
-            sprites['tourist'].sprite.moveTo(250, sprites['tourist'].sprite.y+(Game.getSpeed()+sprites['tourist'].speed));
+            sprites['tourist'].sprite.moveTo(250, sprites['tourist'].sprite.y+(Game.getSpeed()+sprites['tourist'].speed)*dt);
         }
         sprites['tourist'].sprite.setImage(sprites['tourist'].sprite.anim_default.next());
         sprites['mycharacter'].sprite.setImage(sprites['mycharacter'].sprite.anim_default.next());
@@ -118,7 +118,7 @@ var Characters = (function () {
             sprites['copper'].sprite.moveTo(50, -y);
         } 
         else {
-            sprites['copper'].sprite.y+=(Game.getSpeed()+sprites['copper'].speed);
+            sprites['copper'].sprite.y+=(Game.getSpeed()+sprites['copper'].speed)*dt;
         }
           
         if (sprites['frog'].sprite.y > jaws.height) {
@@ -127,7 +127,7 @@ var Characters = (function () {
             sprites['frog'].sprite.moveTo(180, -y);
         } 
         else {
-            sprites['frog'].sprite.y+=(Game.getSpeed()+sprites['frog'].speed);
+            sprites['frog'].sprite.y+=(Game.getSpeed()+sprites['frog'].speed)*dt;
         }
                   
         if (sprites['passerby'].sprite.y > jaws.height) {
@@ -135,7 +135,7 @@ var Characters = (function () {
             sprites['passerby'].sprite.moveTo(220, -y);
         } 
             else {
-            sprites['passerby'].sprite.y+=(Game.getSpeed()+sprites['passerby'].speed);
+            sprites['passerby'].sprite.y+=(Game.getSpeed()+sprites['passerby'].speed)*dt;
         }
                   
         if (sprites['cone'].sprite.y > jaws.height) {
@@ -144,7 +144,7 @@ var Characters = (function () {
             sprites['cone'].sprite.moveTo(x, -y);
         } 
         else {
-        sprites['cone'].sprite.y+=Game.getSpeed()/0.5;
+        sprites['cone'].sprite.y+=0.2*dt/0.5;
         }
                 
         if (sprites['car'].sprite.y > jaws.height) {
@@ -153,7 +153,7 @@ var Characters = (function () {
             sprites['car'].sprite.moveTo(x, -y);
         } 
             else {
-            sprites['car'].sprite.y+=(Game.getSpeed()+sprites['car'].speed);
+            sprites['car'].sprite.y+=(Game.getSpeed()+sprites['car'].speed)*dt;
         }
                   
         if (sprites['bike'].sprite.y > jaws.height) {
@@ -162,7 +162,7 @@ var Characters = (function () {
             sprites['bike'].sprite.moveTo(x, -y);
         } 
         else {
-            sprites['bike'].sprite.y+=(Game.getSpeed()+sprites['bike'].speed);
+            sprites['bike'].sprite.y+=(Game.getSpeed()+sprites['bike'].speed)*dt;
         }
                   
         if (sprites['benz'].sprite.y > jaws.height) {
@@ -171,7 +171,7 @@ var Characters = (function () {
             sprites['benz'].sprite.moveTo(x, -y);
         } 
             else {
-            sprites['benz'].sprite.y+=(Game.getSpeed()+sprites['benz'].speed);
+            sprites['benz'].sprite.y+=(Game.getSpeed()+sprites['benz'].speed)*dt;
 
         }
                 
@@ -186,7 +186,7 @@ var Characters = (function () {
             sprites['manhole'].sprite.moveTo(x, -y);
         } 
         else {
-            sprites['manhole'].sprite.y += Game.getSpeed()/0.5; //0.5 here is the damping factor
+            sprites['manhole'].sprite.y += 0.2*dt/0.5; //0.5 here is the damping factor
         }
         if (
             (jaws.collideOneWithOne(sprites['mycharacter'].sprite,sprites['benz'].sprite))||
@@ -272,7 +272,7 @@ var Characters = (function () {
     function onSuccess(acceleration) 
     { 
         var currentAcceleration = (acceleration.x * 0.1) + (pastAcceleration * 0.9)        
-        velocity = currentAcceleration * accelerationMultiplicationFactor; 
+        velocity = currentAcceleration * 3 * dt; 
         var x = sprites['mycharacter'].sprite.x + velocity;
                  
         if (x < 20) 
@@ -286,7 +286,7 @@ var Characters = (function () {
         }
         sprites['mycharacter'].sprite.moveTo(x, sprites['mycharacter'].sprite.y);
                 //console.log(x)
-                 // console.log(jaws.current_tick.getTime());
+                //console.log(jaws.current_tick.getTime());
     }
                   
     function onError()

@@ -1,7 +1,7 @@
 var Game = (function () {
 	
 
-	var speed = 6,
+	var speed = 0.2,
 		score = 0,
         currenthighscore = highScore,
 		lives = 3,
