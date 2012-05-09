@@ -50,23 +50,17 @@ var Characters = (function () {
             }
         };
     
-    var lives = Game.getLives();
-    var speed = Game.getSpeed();
     var velocity;
-    var pastAcceleration;
     var count;
     var options = { frequency: 1 };  // Update every 1 milli second
                   
     function setup () {
          
         count = 0;
-         
         dead = false;
         pastAcceleration = 0;
         velocity = 0;
-        
-       // alert("Hello")
-
+                  
         var animTourist = new jaws.Animation({ sprite_sheet: 'assets/img/obst_touristSprite.png', frame_size: [43, 47], frame_duration:60 });
         sprites['tourist'].sprite = new jaws.Sprite({ x: 100, y: -43, scale: 1});
         sprites['tourist'].sprite.anim_default = animTourist.slice(0,2);
@@ -207,7 +201,6 @@ var Characters = (function () {
             (jaws.collideCircles(sprites['mycharacter'].sprite,sprites['passerby'].sprite)))
             
         {
-            //alert(sprites['car'].sprite.getRadius())
             sprites['mycharacterdestroyed'].sprite.moveTo(sprites['mycharacter'].sprite.x-20, sprites['mycharacterdestroyed'].sprite.y);
             sprites['mycharacterdestroyed'].sprite.setImage(sprites['mycharacterdestroyed'].sprite.anim_default.next());
             dead = true; 
@@ -222,8 +215,7 @@ var Characters = (function () {
     }
        
                 
-    function draw ()
-    {
+    function draw () {
         sprites['manhole'].sprite.draw(); 
         sprites['cone'].sprite.draw();
         sprites['tourist'].sprite.draw();
@@ -234,34 +226,18 @@ var Characters = (function () {
         sprites['benz'].sprite.draw();
         sprites['car'].sprite.draw();
      
-      if (dead)       
-      {
-                  
-                  if (count < 50)    { 
-                  sprites['mycharacterdestroyed'].sprite.draw();  
-                  count++;
-                  } else {
-                  //count = 0;
-                 // sprites['mycharacterdestroyed'].sprite.draw();
-                  finalScreen.draw();
-                  // TODO: make sure animation last for at least 20 ticks, not just until the next 20th tick
-                  if (highScore < Game.getScore())
-                  {
-                  //ReadWriteHighScore.setHighScore(myGameState.getScore())
-                  ReadWriteHighScore.writetofile();
-                  highScore = myGameState.getScore();
-                  myGameState.getScore();
-                  cconsole.log(myGameState.getScore())
-                  }
-                  navigator.accelerometer.clearWatch(watchID);
-                  watchID = null;
-                  window.setTimeout(function(){ backToStartScreen.startScreen() }, 1000);
-                  //alert("DEAD1")
-                  jaws.stop(menuState)
-                  jaws.stop(myGameState);
-                }
-                  
-        
+        if (dead){
+            if (count < 50)  { 
+                sprites['mycharacterdestroyed'].sprite.draw();  
+                count++;
+            } else {
+                finalScreen.draw();
+                navigator.accelerometer.clearWatch(watchID);
+                watchID = null;
+                window.setTimeout(function(){ backToStartScreen.startScreen() }, 1000);
+                jaws.stop(menuState)
+                jaws.stop(myGameState);
+            }
         }else {
             sprites['mycharacter'].sprite.draw();
         }
@@ -285,10 +261,8 @@ var Characters = (function () {
 
         }
         sprites['mycharacter'].sprite.moveTo(x, sprites['mycharacter'].sprite.y);
-                //console.log(x)
-                //console.log(jaws.current_tick.getTime());
     }
-                  
+                            
     function onError()
     {
                   

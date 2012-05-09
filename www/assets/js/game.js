@@ -37,9 +37,15 @@ var Game = (function () {
             // get my_media position
             my_media.getCurrentPosition(
             // success callback
+                
             function(position) {
                 if (position > -1) {
+                    
                     setAudioPosition((position) + " sec");
+                }
+                if (position == -1)
+                {
+                     my_media.play();                    
                 }
             },
             // error callback

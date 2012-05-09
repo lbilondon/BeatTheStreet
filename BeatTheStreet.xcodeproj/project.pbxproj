@@ -36,8 +36,6 @@
 		B10E99A01547000D0070BBF3 /* www in Resources */ = {isa = PBXBuildFile; fileRef = B10E999F1547000D0070BBF3 /* www */; };
 		B10E99A4154850B40070BBF3 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B10E99A3154850B40070BBF3 /* icon@2x.png */; };
 		B10E99A6154853D30070BBF3 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B10E99A5154853D30070BBF3 /* Icon.png */; };
-		B14C103F154EB99600719E58 /* x.png in Resources */ = {isa = PBXBuildFile; fileRef = B14C103E154EB99600719E58 /* x.png */; };
-		B14C1041154ED54200719E58 /* y.png in Resources */ = {isa = PBXBuildFile; fileRef = B14C1040154ED54200719E58 /* y.png */; };
 		B14C1043154EF0D600719E58 /* chicagobold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B14C1042154EF0D600719E58 /* chicagobold.ttf */; };
 		B18AC40D15499148005BD06B /* 114x114_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B18AC40C15499148005BD06B /* 114x114_Icon.png */; };
 		B18AC41015499158005BD06B /* 57x57_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B18AC40F15499158005BD06B /* 57x57_Icon.png */; };
@@ -79,8 +77,6 @@
 		B10E999F1547000D0070BBF3 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		B10E99A3154850B40070BBF3 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		B10E99A5154853D30070BBF3 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		B14C103E154EB99600719E58 /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = x.png; path = "../../../Desktop/untitled folder/x.png"; sourceTree = "<group>"; };
-		B14C1040154ED54200719E58 /* y.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = y.png; path = "../../../Desktop/untitled folder/y.png"; sourceTree = "<group>"; };
 		B14C1042154EF0D600719E58 /* chicagobold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = chicagobold.ttf; path = www/assets/font/chicagobold.ttf; sourceTree = SOURCE_ROOT; };
 		B18AC40C15499148005BD06B /* 114x114_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114x114_Icon.png; sourceTree = "<group>"; };
 		B18AC40F15499158005BD06B /* 57x57_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 57x57_Icon.png; sourceTree = "<group>"; };
@@ -121,8 +117,6 @@
 		B10E993F1546FFF20070BBF3 = {
 			isa = PBXGroup;
 			children = (
-				B14C103E154EB99600719E58 /* x.png */,
-				B14C1040154ED54200719E58 /* y.png */,
 				B18AC40F15499158005BD06B /* 57x57_Icon.png */,
 				B18AC40C15499148005BD06B /* 114x114_Icon.png */,
 				B10E99A5154853D30070BBF3 /* Icon.png */,
@@ -320,8 +314,6 @@
 				B10E99A6154853D30070BBF3 /* Icon.png in Resources */,
 				B18AC40D15499148005BD06B /* 114x114_Icon.png in Resources */,
 				B18AC41015499158005BD06B /* 57x57_Icon.png in Resources */,
-				B14C103F154EB99600719E58 /* x.png in Resources */,
-				B14C1041154ED54200719E58 /* y.png in Resources */,
 				B14C1043154EF0D600719E58 /* chicagobold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
