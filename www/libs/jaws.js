@@ -1271,7 +1271,8 @@ jaws.Sprite.prototype.rect = function() {
             /** Returns a jaws.Rect() perfectly surrouning sprite. Also cache rect in this.cached_rect. */
 jaws.Sprite.prototype.getRadius = function()
 {
-    return this.width/4    
+    //alert(this.width)
+    return (this.width/3.5) 
 
     //console.log("This radisu" + this.myradius
 } 
@@ -2550,7 +2551,7 @@ jaws.collideManyWithMany = function(list1, list2) {
  * Takes two objects with properties "radius" as argument.
  */
 jaws.collideCircles = function(object1, object2) {
-  return ( jaws.distanceBetween(object1, object2) < object1.getRadius() + object2.getRadius() )
+  return ( jaws.distanceBetweenCircles(object1, object2) < object1.getRadius() + object2.getRadius() )
 }
 
 /** 
@@ -2568,6 +2569,14 @@ jaws.collideRects = function(rect1, rect2) {
  */
 jaws.distanceBetween = function(object1, object2) {
   return Math.sqrt( Math.pow(object1.x-object2.x, 2) +  Math.pow(object1.y-object2.y, 2) )
+}
+            
+            
+jaws.distanceBetweenCircles = function(object1,object2){
+    var absolutex = Math.abs((object1.x + object1.width/2) - (object2.x + object2.width/2))
+    var absolutey = Math.abs((object1.y + object1.width/2) - (object2.y + object2.width/2))
+    //console.log(absolutex + " diff  " + absolutey)
+    return Math.sqrt(Math.pow(absolutex,2) + Math.pow(absolutey,2));
 }
 
 /** private */

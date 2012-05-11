@@ -184,8 +184,6 @@ var Characters = (function () {
         }
         if (
             (jaws.collideOneWithOne(sprites['mycharacter'].sprite,sprites['benz'].sprite))||
-            (jaws.collideOneWithOne(sprites['mycharacter'].sprite,sprites['frog'].sprite))||
-            (jaws.collideOneWithOne(sprites['mycharacter'].sprite,sprites['car'].sprite))||
             (jaws.collideOneWithOne(sprites['mycharacter'].sprite,sprites['cone'].sprite)))
         {
             sprites['mycharacterdestroyed'].sprite.moveTo(sprites['mycharacter'].sprite.x, sprites['mycharacterdestroyed'].sprite.y)
@@ -196,6 +194,8 @@ var Characters = (function () {
         if (
             (jaws.collideCircles(sprites['mycharacter'].sprite,sprites['tourist'].sprite))||
             (jaws.collideCircles(sprites['mycharacter'].sprite,sprites['bike'].sprite))||
+            (jaws.collideOneWithOne(sprites['mycharacter'].sprite,sprites['frog'].sprite))||
+            (jaws.collideOneWithOne(sprites['mycharacter'].sprite,sprites['car'].sprite))||
             (jaws.collideCircles(sprites['mycharacter'].sprite,sprites['copper'].sprite))||
             (jaws.collideCircles(sprites['mycharacter'].sprite,sprites['manhole'].sprite))||
             (jaws.collideCircles(sprites['mycharacter'].sprite,sprites['passerby'].sprite)))
